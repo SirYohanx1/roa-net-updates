@@ -1,0 +1,6 @@
+
+device: tun0
+mtu: 9000
+proxy: socks5://127.0.0.1:10808
+loglevel: info
+  

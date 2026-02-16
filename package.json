@@ -1,0 +1,65 @@
+{
+  "name": "roa-net",
+  "productName": "ROA Net",
+  "version": "1.0.0",
+  "description": "Team ROA Net - Secure Tunnel",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && electron-builder",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "electron-updater": "^6.1.7"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1",
+    "vite": "^5.0.0"
+  },
+  "build": {
+    "appId": "com.roanet.app",
+    "productName": "ROA Net",
+    "directories": {
+      "output": "dist_electron"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "resources/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "resources/sing-box.exe",
+        "to": "sing-box.exe"
+      },
+      {
+        "from": "public",
+        "to": "public"
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "public/icon.ico",
+      "artifactName": "ROA Net V${version}.${ext}",
+      "requestedExecutionLevel": "requireAdministrator" 
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "ROA Net",
+      "include": "build/installer.nsh" 
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "SirYohanx1",
+        "repo": "roa-net-updates"
+      }
+    ]
+  }
+}
